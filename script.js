@@ -49,9 +49,6 @@ spinBtn.addEventListener("click", () => {
 
     const person =
       members[Math.floor(Math.random() * members.length)];
-    const punishment =
-      punishments[Math.floor(Math.random() * punishments.length)];
-
     roulette.textContent = `😱 ${person}：`;
     spinBtn.disabled = false;
   }, 2000);
