@@ -1,16 +1,27 @@
 // ===== メニュー =====
 const menuBtn = document.getElementById("menuBtn");
 const menu = document.getElementById("menu");
+const overlay = document.getElementById("overlay");
 
 menuBtn.addEventListener("click", () => {
   menu.classList.toggle("show");
+  overlay.classList.toggle("show");
 });
 
+// メニュー内リンククリックで閉じる
 menu.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", () => {
     menu.classList.remove("show");
+    overlay.classList.remove("show");
   });
 });
+
+// 背景タップで閉じる
+overlay.addEventListener("click", () => {
+  menu.classList.remove("show");
+  overlay.classList.remove("show");
+});
+
 
 // ===== 罰ゲームルーレット =====
 const members = [
@@ -21,13 +32,6 @@ const members = [
   "そうちゃん"
 ];
 
-const punishments = [
-  "次の写真で変顔",
-  "たこ焼き1個おごり",
-  "関西弁で30分話す",
-  "写真係になる",
-  "次の移動で先頭"
-];
 
 const roulette = document.getElementById("roulette");
 const spinBtn = document.getElementById("spinBtn");
@@ -48,7 +52,7 @@ spinBtn.addEventListener("click", () => {
     const punishment =
       punishments[Math.floor(Math.random() * punishments.length)];
 
-    roulette.textContent = `🎉 ${person}：${punishment}`;
+    roulette.textContent = `😱 ${person}：`;
     spinBtn.disabled = false;
   }, 2000);
 });
