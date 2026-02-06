@@ -5,7 +5,9 @@ body {
   color: #444;
 }
 
+/* ===== ヘッダー ===== */
 header {
+  position: relative;
   background: linear-gradient(135deg, #ff9aa2, #ffd6a5);
   color: white;
   padding: 24px 16px;
@@ -23,6 +25,45 @@ header p {
   font-size: 14px;
 }
 
+/* メニューアイコン */
+.menu-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* ===== サイドメニュー ===== */
+.menu {
+  position: fixed;
+  top: 0;
+  right: -240px;
+  width: 220px;
+  height: 100%;
+  background: white;
+  box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.menu.show {
+  right: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 16px;
+}
+
+/* ===== カード ===== */
 .card {
   background: white;
   margin: 16px;
@@ -40,9 +81,10 @@ ul {
 }
 
 li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
+/* ===== リンク ===== */
 .map-link {
   display: block;
   margin-top: 12px;
@@ -55,6 +97,7 @@ li {
   font-size: 16px;
 }
 
+/* ===== ルーレット ===== */
 .roulette {
   margin: 16px auto;
   padding: 24px;

@@ -1,3 +1,18 @@
+// ===== メニュー =====
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+
+menuBtn.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
+
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("show");
+  });
+});
+
+// ===== 罰ゲームルーレット =====
 const members = [
   "しゅうと",
   "りょうが",

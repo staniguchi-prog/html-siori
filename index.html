@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>大阪旅行　しおり</title>
+  <title>大阪旅行 しおり</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,39 +11,60 @@
 <header>
   <h1>🏯 大阪旅行のしおり</h1>
   <p>2026 / 03 / 25 - 26</p>
+  <button id="menuBtn" class="menu-btn">☰</button>
 </header>
 
-<section class="card">
+<nav id="menu" class="menu">
+  <a href="#day1">🗓 1日目</a>
+  <a href="#day2">🗓 2日目</a>
+  <a href="#hotel">🏨 宿泊</a>
+  <a href="#usj">🎢 USJ</a>
+  <a href="#roulette-section">🎯 ルーレット</a>
+</nav>
+
+<section class="card" id="day1">
   <h2>🗓 1日目</h2>
   <ul>
-    <li>10:00 新大阪集合</li>
-    <li>12:00 たこ焼き</li>
+    <li>04:00 マクドナルド集合</li>
+    <li>12:00 飯</li>
     <li>14:00 大阪城</li>
+    <li>17:00 飛田新地</li>
+    <li>19:00 ホテルチェックイン</li>
   </ul>
 </section>
 
-<section class="card">
+<section class="card" id="day2">
   <h2>🗓 2日目</h2>
   <ul>
-    <li>🎢 USJ</li>
+    <li>08:00 ホテルチェックアウト</li>
+    <li>10:00 🎢 USJ</li>
+    <li>17:00 大阪出発</li>
+    <li>23:00 マクドナルド解散</li>
   </ul>
 </section>
 
-<section class="card">
-  <h2>🏨宿泊</h2>
+<section class="card" id="hotel">
+  <h2>🏨 宿泊</h2>
+  <p>マクドナルド秦野西大竹店</p>
   <ul>
-    <li>「マクドナルド秦野西大竹店」</li>
-    <li>リンク</li>　<a href="https://map.mcdonalds.co.jp/map/14748" target="_blank">https://www.booking.com/hotel/jp/the-layla-osaka.ja.html</a> 
-    <li>アクセス</li>　<a
-    href="https://maps.app.goo.gl/Xuo7KVRTdJGgUpAA8?g_st=il"
-    target="_blank"
-    class="map-link"
-  >    🗺 ホテルの場所を開く
-    </a>
-</ul>
+    <li>
+      <a href="https://map.mcdonalds.co.jp/map/14748" target="_blank">
+        🔗 店舗情報
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://maps.app.goo.gl/Xuo7KVRTdJGgUpAA8?g_st=il"
+        target="_blank"
+        class="map-link"
+      >
+        🗺 場所を開く
+      </a>
+    </li>
+  </ul>
 </section>
 
-<section class="card">
+<section class="card" id="usj">
   <h2>🎢 USJ パークマップ</h2>
   <a
     href="https://www.usj.co.jp/web/ja/jp/service-guide/parkmap?mapFilters=;&mapModal=page"
@@ -54,13 +75,9 @@
   </a>
 </section>
 
-<section class="card">
+<section class="card" id="roulette-section">
   <h2>🎯 罰ゲームルーレット</h2>
-
-  <div id="roulette" class="roulette">
-    スタート！
-  </div>
-
+  <div id="roulette" class="roulette">スタート！</div>
   <button id="spinBtn">🎰 まわす</button>
 </section>
 
