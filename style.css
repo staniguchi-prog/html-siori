@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  background: #fff7f2;
+  font-family: system-ui, sans-serif;
+  color: #444;
+}
+
+header {
+  background: linear-gradient(135deg, #ff9aa2, #ffd6a5);
+  color: white;
+  padding: 24px 16px;
+  text-align: center;
+  border-radius: 0 0 24px 24px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.card {
+  background: white;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+.map-link {
+  display: block;
+  margin-top: 12px;
+  padding: 14px;
+  text-align: center;
+  background: #6c63ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-size: 16px;
+}
+
+.roulette {
+  margin: 16px auto;
+  padding: 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  background: #fff0f3;
+  border-radius: 16px;
+  border: 2px dashed #ff9aa2;
+}
+
+#spinBtn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  background: #ff6f91;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+}
