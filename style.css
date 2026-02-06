@@ -49,7 +49,7 @@ header p {
 
 /* メニューアイコン */
 .menu-btn {
-  position: absolute;
+  position: fixed;
   top: 12px;
   right: 16px;
   font-size: 32px;   
