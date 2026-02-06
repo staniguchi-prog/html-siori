@@ -134,16 +134,25 @@ li {
 
 /* ===== リンク ===== */
 .map-link {
-  display: block;
-  margin-top: 12px;
-  padding: 14px;
-  text-align: center;
-  background: #6c63ff;
-  color: white;
-  text-decoration: none;
+  display: inline-block;
+  background: #4a90e2;       /* しっかり青 */
+  color: #ffffff !important; /* 強制白文字 */
+  padding: 12px 18px;
   border-radius: 999px;
-  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(74, 144, 226, 0.45);
+  opacity: 1 !important;     /* ← 透けさせない */
 }
+
+.map-link:visited {
+  color: #ffffff;
+}
+
+.map-link:active {
+  transform: scale(0.97);
+}
+
 
 /* ===== ルーレット ===== */
 .roulette {
@@ -164,8 +173,11 @@ li {
   color: #fff;
   border: none;
   border-radius: 999px;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 12px;
+  display: block;          /* ← これが効く */
+  margin: 20px auto 0;     /* 中央寄せ */
+  width: 80%;              /* スマホで押しやすい */
+  max-width: 320px;
+  font-size: 18px;
+  padding: 16px 0;
 }
 
