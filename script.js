@@ -49,7 +49,7 @@ spinBtn.addEventListener("click", () => {
 
     const person =
       members[Math.floor(Math.random() * members.length)];
-    roulette.textContent = `😱 ${person}：`;
+    roulette.textContent = `😱 ${person} に決定 😱`;
     spinBtn.disabled = false;
   }, 2000);
 });
