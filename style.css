@@ -137,7 +137,12 @@ li {
   display: inline-block;
   background: #4a90e2;       /* しっかり青 */
   color: #ffffff !important; /* 強制白文字 */
-  padding: 12px 18px;
+  display: block;          /* ← これが効く */
+  margin: 20px auto 0;     /* 中央寄せ */
+  width: 80%;              /* スマホで押しやすい */
+  max-width: 320px;
+  font-size: 18px;
+  padding: 16px 0;
   border-radius: 999px;
   font-weight: bold;
   text-decoration: none;
