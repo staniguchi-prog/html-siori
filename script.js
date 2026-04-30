@@ -1,55 +1,69 @@
-// ===== メニュー =====
-const menuBtn = document.getElementById("menuBtn");
-const menu = document.getElementById("menu");
-const overlay = document.getElementById("overlay");
+// ===== SIDE MENU =====
+const menuBtn = document.getElementById('menuBtn');
+const menu = document.getElementById('menu');
+const overlay = document.getElementById('overlay');
 
-menuBtn.addEventListener("click", () => {
-  menu.classList.toggle("show");
-  overlay.classList.toggle("show");
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('show');
+  overlay.classList.toggle('show');
 });
 
-// メニュー内リンククリックで閉じる
-menu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("show");
-    overlay.classList.remove("show");
+overlay.addEventListener('click', () => {
+  menu.classList.remove('show');
+  overlay.classList.remove('show');
+});
+
+menu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    menu.classList.remove('show');
+    overlay.classList.remove('show');
   });
 });
 
-// 背景タップで閉じる
-overlay.addEventListener("click", () => {
-  menu.classList.remove("show");
-  overlay.classList.remove("show");
-});
-
-
-// ===== 罰ゲームルーレット =====
-const members = [
-  "しゅうと",
-  "りょうが",
-  "あきとし",
-  "せとっち",
-  "そうちゃん"
+// ===== ROULETTE =====
+const penalties = [
+  "全員分のアイス奢り 🍦",
+  "大声で替え歌を1曲披露 🎤",
+  "次の食事のお会計を全額払う 💸",
+  "5分間スマホ没収 📵",
+  "その場で10回スクワット 🏋️",
+  "グループラインに黒歴史写真を投稿 📸",
+  "次の移動で先頭を歩く 🚶",
+  "全員に100円ずつ渡す 💰",
+  "1時間コンビニ禁止 🚫",
+  "次のアクティビティでグループ最後尾 🐢",
 ];
 
+let spinning = false;
 
-const roulette = document.getElementById("roulette");
-const spinBtn = document.getElementById("spinBtn");
+const spinBtn = document.getElementById('spinBtn');
+const rouletteText = document.getElementById('rouletteText');
+const rouletteSub = document.getElementById('rouletteSub');
+const rouletteBox = document.getElementById('rouletteBox');
 
-spinBtn.addEventListener("click", () => {
+spinBtn.addEventListener('click', () => {
+  if (spinning) return;
+
+  spinning = true;
   spinBtn.disabled = true;
+  rouletteBox.classList.add('spinning');
+  rouletteSub.textContent = '決定中...';
 
-  const spin = setInterval(() => {
-    roulette.textContent =
-      members[Math.floor(Math.random() * members.length)];
-  }, 100);
+  let count = 0;
+  const interval = setInterval(() => {
+    rouletteText.textContent = penalties[Math.floor(Math.random() * penalties.length)];
+    count++;
 
-  setTimeout(() => {
-    clearInterval(spin);
+    if (count >= 20) {
+      clearInterval(interval);
+      rouletteBox.classList.remove('spinning');
 
-    const person =
-      members[Math.floor(Math.random() * members.length)];
-    roulette.textContent = `😱 ${person} に決定 😱`;
-    spinBtn.disabled = false;
-  }, 2000);
+      const result = penalties[Math.floor(Math.random() * penalties.length)];
+      rouletteText.textContent = result;
+      rouletteSub.textContent = '決定！これが今回の罰ゲームです 🎉';
+
+      spinBtn.disabled = false;
+      spinning = false;
+    }
+  }, 80);
 });

@@ -1,14 +1,21 @@
 @charset "UTF-8";
 
-body {
-  margin: 0;
-  font-family: "Helvetica Neue", "Hiragino Kaku Gothic ProN", sans-serif;
-  background: #333;
-  position: relative;
-  overflow-x: hidden;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* 背景画像（ネットURL） */
+body {
+  margin: 0;
+  font-family: 'Zen Maru Gothic', "Hiragino Kaku Gothic ProN", sans-serif;
+  background: #2a2a2a;
+  color: #333;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 背景画像 */
 body::before {
   content: "";
   position: fixed;
@@ -16,67 +23,111 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("https://plus.unsplash.com/premium_photo-1733342572346-5420c95f7556?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8b3Nha2F8ZW58MHx8MHx8fDA%3D");
+  background-image: url("https://plus.unsplash.com/premium_photo-1733342572346-5420c95f7556?w=1600&auto=format&fit=crop&q=60");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.08;
-  z-index: 0;              
+  opacity: 0.10;
+  z-index: 0;
   pointer-events: none;
 }
 
-
-
-/* ===== ヘッダー ===== */
+/* ===== HEADER ===== */
 header {
   position: relative;
-  background: linear-gradient(135deg, #ff9aa2, #ffd6a5);
+  z-index: 10;
+  background: linear-gradient(135deg, #ff7eb3 0%, #ff9aa2 40%, #ffd6a5 100%);
   color: white;
-  padding: 24px 16px;
+  padding: 32px 20px 40px;
   text-align: center;
-  border-radius: 0 0 24px 24px;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 8px 30px rgba(255, 120, 150, 0.4);
 }
 
 header h1 {
-  margin: 0;
-  font-size: 30px;
+  margin: 0 0 6px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 header p {
-  margin-top: 8px;
-  font-size: 14px;
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
 }
 
-/* メニューアイコン */
+
+/* ===== MENU BUTTON ===== */
 .menu-btn {
   position: fixed;
-  top: 12px;
+  top: 14px;
   right: 16px;
-  font-size: 32px;   
-  padding: 8px 12px; 
-  background: rgba(255,255,255,0.2);
-  border: none;
-  border-radius: 12px;
+  font-size: 22px;
+  padding: 9px 13px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
   color: white;
-  box-shadow: 0 4px 10px rgba(255, 111, 165, 0.5);
+  box-shadow: 0 4px 14px rgba(255, 100, 140, 0.35);
+  cursor: pointer;
+  z-index: 1100;
+  transition: transform 0.15s;
 }
 
+.menu-btn:hover {
+  transform: scale(1.05);
+}
 
-/* ===== サイドメニュー ===== */
+/* ===== SIDE MENU ===== */
 .menu {
   position: fixed;
   top: 0;
-  right: -240px;
-  width: 220px;
+  right: -260px;
+  width: 240px;
   height: 100%;
   background: white;
-  box-shadow: -4px 0 10px rgba(0,0,0,0.1);
-  padding: 24px 16px;
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.12);
+  padding: 80px 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: right 0.3s ease;
+  gap: 4px;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
+}
+
+.menu-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #bbb;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0 12px;
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu a:hover {
+  background: #fff0f5;
+  color: #ff7eb3;
+}
+
+.menu a span.icon {
+  font-size: 18px;
 }
 
 .overlay {
@@ -85,7 +136,7 @@ header p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); 
+  background: rgba(0, 0, 0, 0.45);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -101,89 +152,350 @@ header p {
   right: 0;
 }
 
-.menu a {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
+/* ===== MAIN CONTENT ===== */
+main {
+  position: relative;
+  z-index: 1;
+  padding: 24px 16px 40px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-/* ===== カード ===== */
+/* ===== SECTION LABEL ===== */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ff7eb3;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+/* ===== CARD ===== */
 .card {
-  background: #ffffff; /* 完全白 */
-  border-radius: 18px;
-  padding: 18px;
-  margin: 18px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 22px;
+  padding: 20px;
+  margin-bottom: 20px;
   box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.9); /* 白フチ */
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 10px 28px rgba(0, 0, 0, 0.10),
+    0 0 0 1px rgba(255, 255, 255, 0.9);
+  scroll-margin-top: 16px;
 }
 
-
-
-h2 {
-  margin-top: 0;
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
 }
 
-ul {
-  padding-left: 20px;
+.card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-li {
-  margin-bottom: 8px;
+.card-badge {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: #fff0f5;
+  color: #ff7eb3;
+  border: 1px solid #ffd6e4;
 }
 
-/* ===== リンク ===== */
-.map-link {
-  display: inline-block;
-  background: #4a90e2;       /* しっかり青 */
-  color: #ffffff !important; /* 強制白文字 */
-  display: block;          /* ← これが効く */
-  margin: 20px auto 0;     /* 中央寄せ */
-  width: 80%;              /* スマホで押しやすい */
-  max-width: 320px;
+/* ===== TIMELINE ===== */
+.timeline {
+  position: relative;
+  padding-left: 18px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 1.5px;
+  background: linear-gradient(to bottom, #ffd6e4, #ffd6a5);
+  border-radius: 2px;
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 13px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #ffb3c6;
+  z-index: 1;
+}
+
+.tl-item.highlight::before {
+  background: #ff7eb3;
+  border-color: #ff7eb3;
+  box-shadow: 0 0 0 3px rgba(255, 126, 179, 0.2);
+}
+
+.tl-card {
+  background: #fafafa;
+  border: 1px solid #f0e8ee;
+  border-radius: 14px;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.tl-card:hover {
+  transform: translateX(2px);
+  box-shadow: 0 4px 12px rgba(255, 120, 160, 0.12);
+}
+
+.tl-item.highlight .tl-card {
+  background: #fff5f8;
+  border-color: #ffd6e4;
+}
+
+.tl-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff9ab2;
+  min-width: 40px;
+  letter-spacing: 0.04em;
+}
+
+.tl-text {
+  font-size: 14px;
+  color: #333;
+  flex: 1;
+}
+
+.tl-icon {
   font-size: 18px;
-  padding: 16px 0;
-  text-align: center;
-  border-radius: 999px;
-  font-weight: bold;
+}
+
+/* ===== INFO TABLE ===== */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-table tr {
+  border-bottom: 1px solid #f5edf2;
+}
+
+.info-table tr:last-child {
+  border-bottom: none;
+}
+
+.info-table td {
+  padding: 10px 4px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.info-table td:first-child {
+  color: #999;
+  width: 70px;
+}
+
+.info-link {
+  color: #4a90e2;
   text-decoration: none;
-  box-shadow: 0 6px 14px rgba(74, 144, 226, 0.45);
-  opacity: 1 !important;     /* ← 透けさせない */
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.map-link:visited {
-  color: #ffffff;
+.info-link:hover {
+  text-decoration: underline;
 }
 
-.map-link:active {
+/* ===== BIG LINK BUTTON ===== */
+.big-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #4a90e2, #5fa8f5);
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 15px 0;
+  border-radius: 999px;
+  width: 85%;
+  margin: 14px auto 0;
+  box-shadow: 0 6px 18px rgba(74, 144, 226, 0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.big-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(74, 144, 226, 0.45);
+}
+
+.big-link:active {
   transform: scale(0.97);
 }
 
-
-/* ===== ルーレット ===== */
-.roulette {
-  margin: 16px auto;
-  padding: 24px;
+/* ===== ROULETTE ===== */
+.roulette-box {
+  background: #fff0f5;
+  border: 2px dashed #ffb3c6;
+  border-radius: 18px;
+  padding: 28px 20px;
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  background: #fff0f3;
-  border-radius: 16px;
-  border: 2px dashed #ff9aa2;
+  margin-bottom: 16px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-#spinBtn {
+.roulette-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e05080;
+  line-height: 1.4;
+}
 
+.roulette-sub {
+  font-size: 12px;
+  color: #bbb;
+}
+
+.roulette-box.spinning .roulette-text {
+  animation: flick 0.1s infinite alternate;
+}
+
+@keyframes flick {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.spin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: linear-gradient(135deg, #ff7bb7, #ff5c9a);
-  box-shadow: 0 8px 18px rgba(255, 92, 154, 0.45);
+  box-shadow: 0 8px 20px rgba(255, 92, 154, 0.4);
   color: #fff;
   border: none;
   border-radius: 999px;
-  display: block;          /* ← これが効く */
-  margin: 20px auto 0;     /* 中央寄せ */
-  width: 80%;              /* スマホで押しやすい */
-  max-width: 320px;
-  font-size: 18px;
-  padding: 16px 0;
+  width: 85%;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: 700;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
+.spin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(255, 92, 154, 0.45);
+}
+
+.spin-btn:active {
+  transform: scale(0.97);
+}
+
+.spin-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+.count-badge {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #ccc;
+  margin-top: 12px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.08em;
+}
+
+/* ===== RESPONSIVE (iPhone) ===== */
+@media (max-width: 480px) {
+  header {
+    padding: 24px 16px 32px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  main {
+    padding: 16px 12px 32px;
+  }
+
+  .card {
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+
+  .card-title {
+    font-size: 15px;
+  }
+
+  .tl-card {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .tl-text {
+    font-size: 13px;
+  }
+
+  .tl-icon {
+    font-size: 16px;
+  }
+
+  .roulette-text {
+    font-size: 17px;
+  }
+
+  .big-link,
+  .spin-btn {
+    width: 100%;
+    font-size: 15px;
+  }
+}
